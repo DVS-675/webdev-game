@@ -46,25 +46,12 @@ body {
   text-align: center;
   color: #004980;
 }
-.game .start__main_level-button {
-  margin-left: 2.75rem;
-  cursor: pointer;
-  width: 98px;
-  height: 98px;
-  background: #ffffff;
-  border-radius: 12px;
-  font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 72px;
-  border: none;
-  color: #0080c1;
-}
-.game .start__main_level-button:hover {
-  background: #0080c1;
-  color: #ffffff;
-  box-shadow: inset 0 0 0 3px #0080c1;
+.game .start__main_level {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 69px;
+  margin-right: 69px;
 }
 .game .start__main_button {
   cursor: pointer;
@@ -94,4 +81,41 @@ body {
   background: #0080c1;
   color: #ffffff;
   box-shadow: inset 0 0 0 3px #0080c1;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  z-index: 2;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  padding-left: 30px;
+  padding-top: 15px;
+  color: #0080c1;
+  content: "";
+  display: inline-block;
+  cursor: pointer;
+  width: 98px;
+  height: 98px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: none;
+  vertical-align: middle;
+  transition: 0.2s;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]:checked + span {
+  background-color: #0080c1;
+  color: #ffffff;
 }/*# sourceMappingURL=style.css.map */
