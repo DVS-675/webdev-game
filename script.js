@@ -5,5 +5,3 @@ const cardsApp = () => {
 };
 
 cardsApp();
-
-
