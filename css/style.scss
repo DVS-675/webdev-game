@@ -1,0 +1,243 @@
+@font-face {
+   font-family: 'StratosSkyeng';
+   src: url('Web fonts/stratosskyengweb-regular.woff2') format('woff2'),
+      url('Web fonts/stratosskyengweb-regular.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background: #004980;
+}
+.game {
+   display: flex;
+   align-items: center;
+   align-content: center;
+   justify-content: center;
+   width: 100%;
+   height: 100%;
+   position: fixed;
+
+   &__container {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+   }
+   .start__main {
+      margin: 0 auto;
+      background: #c2f5ff;
+      border-radius: 12px;
+      width: 480px;
+      height: 459px;
+   }
+   .start__main_text {
+      margin: 52px auto 48px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 208px;
+      height: 96px;
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 48px;
+      text-align: center;
+      color: #004980;
+   }
+   .start__main_level {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: 69px;
+      margin-right: 69px;
+   }
+
+   .start__main_button {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 67px auto 50px auto;
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      width: 246px;
+      height: 50px;
+      background: #7ac100;
+      border-radius: 12px;
+      border: none;
+   }
+   .start__main_button:hover {
+      transition: all 0.5s ease;
+      background: #9cf305;
+   }
+   .clicked {
+      background: #0080c1;
+      color: #ffffff;
+      box-shadow: inset 0 0 0 3px #0080c1;
+   }
+}
+label {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.start__main_level_item {
+   z-index: 2;
+   font-family: 'StratosSkyeng';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 64px;
+   line-height: 72px;
+   padding-left: 30px;
+   padding-top: 15px;
+   color: #0080c1;
+
+   content: '';
+   display: inline-block;
+   cursor: pointer;
+   width: 98px;
+   height: 98px;
+   background: #ffffff;
+   border-radius: 12px;
+   border: none;
+   vertical-align: middle;
+   transition: 0.2s;
+}
+
+input[type='radio'] {
+   display: none;
+}
+
+input[type='radio']:checked + span {
+   background-color: #0080c1;
+   color: #ffffff;
+}
+
+.timer {
+   font-family: 'StratosSkyeng';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 64px;
+   line-height: 72px;
+   color: #ffffff;
+}
+.main__game {
+   display: flex;
+   flex-direction: column;
+   padding: 22px 22px;
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   &_cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+   }
+
+   &_content {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+   }
+   &_content_button {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      width: 246px;
+      height: 50px;
+      background: #7ac100;
+      border-radius: 12px;
+      border: none;
+   }
+   &_content_button:hover {
+      transition: all 0.5s ease;
+      background: #9cf305;
+   }
+}
+.timer__text {
+   display: flex;
+   justify-content: flex-end;
+   gap: 40%;
+   font-family: 'StratosSkyeng';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   color: #ffffff;
+}
+
+.main__game_cards_item {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   padding: 6px;
+   width: 95px;
+   height: 133px;
+   border-radius: 4px;   
+   &_left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+   }
+   &_center {
+      display: flex;
+      justify-content: center;
+   }
+   &_right {
+      display: flex;
+      flex-direction: column;
+      transform: rotate(180deg);
+   }
+}
+
+.card__suit {
+   width: 7px;
+   margin-left: 4%;
+}
+.card__value {
+   font-family: 'StratosSkyeng';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 24px;
+   align-items: center;
+   color: #000000;
+}
+.card__suit_center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 29.02px;
+   height: 25.58px;
+}

@@ -1,17 +1,27 @@
 {
-  "name": "webdev-game",
-  "version": "1.0.0",
-  "description": "",
-  "main": "gameMenu.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8"
-  }
+   "name": "webdev-game",
+   "version": "1.0.0",
+   "description": "",
+   "main": "gameMenu.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "format": "prettier --write ./",
+      "lint:js": "eslint ./js/**/*.js",
+      "lint:css": "stylelint ./css/**/*.css",
+      "lint": "npm run lint:js && npm run lint:css",
+      "prepare": "husky install"
+   },
+   "author": "",
+   "license": "ISC",
+   "devDependencies": {
+      "eslint": "^8.40.0",
+      "eslint-config-prettier": "^8.8.0",
+      "eslint-plugin-prettier": "^4.2.1",
+      "husky": "^8.0.3",
+      "prettier": "^2.8.8",
+      "stylelint": "^14.8.2",
+      "stylelint-config-prettier": "^9.0.3",
+      "stylelint-config-standard": "^25.0.0",
+      "stylelint-prettier": "^2.0.0"
+   }
 }

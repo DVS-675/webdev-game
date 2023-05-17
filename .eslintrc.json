@@ -1,18 +1,18 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": ["eslint:recommended", "prettier"],
-  "plugins": ["prettier"],
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2020
-  },
-  "rules": {
-    "prettier/prettier": "error",
-    "camelcase": ["error"],
-   
-  }
+   "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+   },
+   "extends": ["eslint:recommended", "prettier"],
+   "plugins": ["prettier"],
+   "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2020
+   },
+   "rules": {
+      /* "prettier/prettier": "error", */
+      "camelcase": ["error"],
+      "eqeqeq": ["error", "always"]
+   }
 }
