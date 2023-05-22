@@ -1,16 +1,12 @@
 import { createIconsArray } from './utils.js'
 import { createGameMenu } from './gameMenu.js'
 import { startGameClosedCards } from './startGameClosed.js'
-import spades from '../img/card_suit_spades.svg';
-import clubs from '../img/card_suit_clubs.svg';
-import diamonds from '../img/card_suit_diamonds.svg';
-import hearts from '../img/card_suit_hearts.svg';
 export const startGame = (gameLevel) => {
    const suitsBackground = {
-      '♠': spades,
-      '♣': clubs,
-      '♥': hearts,
-      '♦': diamonds,
+      '♠': 'card_suit_spades.svg',
+      '♣': 'card_suit_clubs.svg',
+      '♥': 'card_suit_hearts.svg',
+      '♦': 'card_suit_diamonds.svg',
    }
 
    console.log(gameLevel)
