@@ -35,6 +35,7 @@ body {
       height: 100%;
       position: fixed;
    }
+
    .start__main {
       margin: 0 auto;
       background: #c2f5ff;
@@ -251,4 +252,85 @@ input[type='radio']:checked + span {
 .flip:hover {
    background-color: #004980;
    opacity: 0.7;
+}
+
+.end_game_background {
+   background-color: #004980;
+   opacity: 0.2;
+}
+.main__game_result {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: #c2f5ff;
+   border-radius: 12px;
+   width: 480px;
+   height: 459px;
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+   z-index: 2;
+   &_button {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      width: 246px;
+      height: 50px;
+      background: #7ac100;
+      border-radius: 12px;
+      border: none;
+   }
+   &_button:hover {
+      transition: all 0.5s ease;
+      background: #9cf305;
+   }
+
+   &_img {
+      margin-top: 32px;
+   }
+   &_text {
+      margin: 8px auto 28px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 48px;
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 48px;
+      text-align: center;
+      color: #004980;
+   }
+   &_text_time {
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      color: #000000;
+      margin-bottom: 10px;
+   }
+   &_text_timer {
+      font-family: 'StratosSkyeng';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 72px;
+      color: #000000;
+      margin-bottom: 40px;
+   }
 }

@@ -1,8 +1,10 @@
-import { startGame } from './startGame.js'
+import { startGame } from './startGame.js';
 export const createGameMenu = () => {
-   const appEl = document.querySelector('.game__container')
+   const mainAppEl = document.getElementById('main-page');
+   mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
+   const appEl = document.querySelector('.game__container');
 
-   appEl.innerHTML = ''
+   appEl.innerHTML = '';
 
    appEl.innerHTML = `
  <div class='start__main'>
@@ -23,18 +25,18 @@ export const createGameMenu = () => {
         </div>
     <button class="start__main_button">Старт</button>
  </div>
-  `
+  `;
 
    const chooseDifficultButtons = document.querySelectorAll(
       '.start__main_level-button'
-   )
-   const buttonStart = document.querySelector('.start__main_button')
-   console.log(chooseDifficultButtons)
+   );
+   const buttonStart = document.querySelector('.start__main_button');
+   console.log(chooseDifficultButtons);
 
    for (let chooseDifficultButton of chooseDifficultButtons) {
       chooseDifficultButton.addEventListener('click', () => {
-         const gameLevel = Number(chooseDifficultButton.value)
-         buttonStart.addEventListener('click', () => startGame(gameLevel))
-      })
+         const gameLevel = Number(chooseDifficultButton.value);
+         buttonStart.addEventListener('click', () => startGame(gameLevel));
+      });
    }
-}
+};

@@ -1,19 +1,21 @@
-import { createIconsArray } from './utils.js'
-import { createGameMenu } from './gameMenu.js'
-import { startGameClosedCards } from './startGameClosed.js'
+import { createIconsArray } from './utils.js';
+import { createGameMenu } from './gameMenu.js';
+import { startGameClosedCards } from './startGameClosed.js';
 export const startGame = (gameLevel) => {
+   const mainAppEl = document.getElementById('main-page');
+   mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
    const suitsBackground = {
-      '♠': 'card_suit_spades.svg',
-      '♣': 'card_suit_clubs.svg',
-      '♥': 'card_suit_hearts.svg',
-      '♦': 'card_suit_diamonds.svg',
-   }
+      '♠': 'spades.svg',
+      '♣': 'clubs.svg',
+      '♥': 'hearts.svg',
+      '♦': 'diamonds.svg',
+   };
 
-   console.log(gameLevel)
+   console.log(gameLevel);
 
-   const appEl = document.querySelector('.game__container')
-   const cardsIcons = createIconsArray(gameLevel)
-   console.log(cardsIcons)
+   const appEl = document.querySelector('.game__container');
+   const cardsIcons = createIconsArray(gameLevel);
+   console.log(cardsIcons);
 
    const cardsHtml = cardsIcons
       .map((card) => {
@@ -39,9 +41,9 @@ export const startGame = (gameLevel) => {
             }" alt="suit">
         </div>
     </div>
-    `
+    `;
       })
-      .join('')
+      .join('');
 
    appEl.innerHTML = `
     <div class='main__game'>
@@ -57,12 +59,12 @@ export const startGame = (gameLevel) => {
             <div class="main__game_cards">
                 ${cardsHtml}
             </div>
-    </div>`
+    </div>`;
 
-   const buttonStartGame = document.querySelector('.main__game_content_button')
+   
+   const buttonStartGame = document.querySelector('.main__game_content_button');
    buttonStartGame.addEventListener('click', () => {
-      createGameMenu()
-   })
-   setTimeout(() => startGameClosedCards({ appEl, cardsIcons }), 5000)
-}
-
+      createGameMenu();
+   });
+   setTimeout(() => startGameClosedCards({ appEl, cardsIcons }), 5000);
+};
