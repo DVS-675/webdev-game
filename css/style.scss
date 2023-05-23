@@ -1,7 +1,8 @@
 @font-face {
-   font-family: 'StratosSkyeng';
+   font-family: StratosSkyeng;
    src: url('Web fonts/stratosskyengweb-regular.woff2') format('woff2'),
       url('Web fonts/stratosskyengweb-regular.woff') format('woff');
+
    font-weight: normal;
    font-style: normal;
    font-display: swap;
@@ -199,13 +200,15 @@ input[type='radio']:checked + span {
 }
 
 .main__game_cards_item {
+   cursor: pointer;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
    padding: 6px;
    width: 95px;
    height: 133px;
-   border-radius: 4px;   
+   border-radius: 4px;
+   background: center center no-repeat, rgb(255, 255, 255);
    &_left {
       display: flex;
       flex-direction: column;
@@ -240,4 +243,12 @@ input[type='radio']:checked + span {
    align-items: center;
    width: 29.02px;
    height: 25.58px;
+}
+
+.flip {
+   background: center center no-repeat, url(../img/card_shirt.svg);
+}
+.flip:hover {
+   background-color: #004980;
+   opacity: 0.7;
 }

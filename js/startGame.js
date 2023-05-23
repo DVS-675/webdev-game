@@ -20,7 +20,7 @@ export const startGame = (gameLevel) => {
          return `
     <div data-value=${card.value} data-suit=${
             card.suit
-         } class="main__game_cards_item" style="background:center center no-repeat, rgb(255, 255, 255);">
+         } class="main__game_cards_item" >
         <div class="main__game_cards_item_left">
             <div class="card__value">${card.value}</div>
             <img class="card__suit" src="img/${
@@ -65,3 +65,4 @@ export const startGame = (gameLevel) => {
    })
    setTimeout(() => startGameClosedCards({ appEl, cardsIcons }), 5000)
 }
+
