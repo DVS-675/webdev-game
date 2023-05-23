@@ -1,4 +1,5 @@
 import { createGameMenu } from './gameMenu.js';
+
 let clickable = true;
 let firstCard = null;
 let secondCard = null;
@@ -14,7 +15,7 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
       cardsIcons
          .map((card) => {
             return `
-    <div data-value=${card.value} data-suit=${card.suit} class="main__game_cards_item flip" >
+    <div data-value=${card.value} data-suit=${card.suit} class='main__game_cards_item flip' >
         
     </div>
     `;
@@ -36,6 +37,26 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                 ${cardsHtml}
             </div>
     </div>`;
+
+   //Таймер
+   const countEl = document.querySelector('.timer');
+   countEl.innerHTML = `00.0${timer}`;
+   function timeGame() {
+      let timer = 0;
+
+      countEl.textContent = '00.00';
+      function setTime() {
+         timer++;
+         const minutes = ('00' + Math.floor(timer / 60)).slice(-2);
+         const seconds = ('00' + (timer % 60)).slice(-2);
+         countEl.textContent = `${minutes}.${seconds}`;
+      }
+      window.timeGame = setInterval(setTime, 1000);
+      setTimeout(clearInterval, 600000, window.timeGame);
+   }
+   timeGame();
+
+   // Начало игры
 
    const buttonStartGame = document.querySelector('.main__game_content_button');
    buttonStartGame.addEventListener('click', () => {
@@ -89,13 +110,20 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                      }, 500);
                   } else {
                      setTimeout(() => {
+                        console.log(cardItems);
+                        cardItems.forEach((cardItem) =>
+                           cardItem.classList.remove('flip')
+                        );
+
+                        const timeForGame = countEl.innerHTML;
+                        console.log(timeForGame);
                         const mainAppEl = document.getElementById('main-page');
                         mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/dead.svg" alt="dead">
                               <h2 class="main__game_result_text">Вы проиграли</h2>
                               <p class="main__game_result_text_time">Затраченное время</p>
-                              <p class='main__game_result_text_timer'>00.00</p>
+                              <p class='main__game_result_text_timer'>${timeForGame}</p>
                               <button class="main__game_result_button">Играть снова</button>
                             </div>
                             <section id="main" class="game__container">
@@ -106,16 +134,17 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                                           <div class="timer__text">
                                              <span class='timer__text_item'>min</span> <span class='timer__text_item'>sek</span>
                                           </div>
-                                          <p class='timer'>00.00</p>
+                                          <p class='timer'>${timeForGame}</p>
                                        </div>
                                        <button class="main__game_content_button">Начать заново</button>
                                  </div>
                                        <div class="main__game_cards">
-                                     ${cardsHtml}
+                                          ${cardsHtml}
                                        </div>
                               </div>
                             </section>                      
                         `;
+
                         const appEl =
                            document.querySelector('.game__container');
                         appEl.classList.add('end_game_background');
@@ -123,7 +152,7 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                         const buttonStartResult = document.querySelector(
                            '.main__game_result_button'
                         );
-                        console.log(buttonStartResult);
+
                         buttonStartResult.addEventListener('click', () => {
                            const appEl =
                               document.querySelector('.game__container');
@@ -143,13 +172,14 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                         cardItem.className === 'main__game_cards_item'
                   )
                ) {
+                  const timeForGame = countEl.innerHTML;
                   const mainAppEl = document.getElementById('main-page');
                   mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/win.svg" alt="dead">
                               <h2 class="main__game_result_text">Вы выиграли</h2>
                               <p class="main__game_result_text_time">Затраченное время</p>
-                              <p class='main__game_result_text_timer'>00.00</p>
+                              <p class='main__game_result_text_timer'>${timeForGame}</p>
                               <button class="main__game_result_button">Играть снова</button>
                             </div>
                             <section id="main" class="game__container">
@@ -160,7 +190,7 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                                           <div class="timer__text">
                                              <span class='timer__text_item'>min</span> <span class='timer__text_item'>sek</span>
                                           </div>
-                                          <p class='timer'>00.00</p>
+                                          <p class='timer'>${timeForGame}</p>
                                        </div>
                                        <button class="main__game_content_button">Начать заново</button>
                                  </div>
