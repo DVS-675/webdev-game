@@ -1,9 +1,15 @@
 import { createGameMenu } from './gameMenu.js';
 
 let clickable = true;
-let firstCard = null;
-let secondCard = null;
-export const startGameClosedCards = ({ appEl, cardsIcons }) => {
+let firstCard: any = null;
+let secondCard: any = null;
+export const startGameClosedCards = ({
+   appEl,
+   cardsIcons,
+}: {
+   appEl: HTMLElement;
+   cardsIcons: any;
+}) => {
    const suitsBackground = {
       '♠': 'spades.svg',
       '♣': 'clubs.svg',
@@ -13,7 +19,7 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
    const cardsHtml =
       cardsIcons &&
       cardsIcons
-         .map((card) => {
+         .map((card: any) => {
             return `
     <div data-value=${card.value} data-suit=${card.suit} class='main__game_cards_item flip' >
         
@@ -39,8 +45,8 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
     </div>`;
 
    //Таймер
-   const countEl = document.querySelector('.timer');
-   countEl.innerHTML = `00.0${timer}`;
+   const countEl = document.querySelector('.timer') as HTMLElement;
+   /* countEl.innerHTML = `00.0${timer}`; */
    function timeGame() {
       let timer = 0;
 
@@ -51,14 +57,16 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
          const seconds = ('00' + (timer % 60)).slice(-2);
          countEl.textContent = `${minutes}.${seconds}`;
       }
-      window.timeGame = setInterval(setTime, 1000);
-      setTimeout(clearInterval, 600000, window.timeGame);
+      window.cardGame.timeGame = setInterval(setTime, 1000);
+      setTimeout(clearInterval, 600000, window.cardGame.timeGame);
    }
    timeGame();
 
    // Начало игры
 
-   const buttonStartGame = document.querySelector('.main__game_content_button');
+   const buttonStartGame = document.querySelector(
+      '.main__game_content_button'
+   ) as HTMLElement;
    buttonStartGame.addEventListener('click', () => {
       clickable = true;
       firstCard = null;
@@ -68,12 +76,11 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
 
    const flipCard = () => {
       const cardItems = document.querySelectorAll('.main__game_cards_item');
-
-      for (const cardItem of cardItems) {
-         cardItem.addEventListener('click', () => {
+      cardItems.forEach((cardItem) => {
+         cardItem .addEventListener('click', () => {
             if (clickable) {
-               const cardSuit = cardItem.dataset.suit;
-               const cardValue = cardItem.dataset.value;
+               const cardSuit = window.cardGame.cardItem.dataset.suit;
+               const cardValue = window.cardGame.cardItem.dataset.value;
                cardItem.classList.remove('flip');
                cardItem.innerHTML = `            
             <div class="main__game_cards_item_left">
@@ -117,7 +124,9 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
 
                         const timeForGame = countEl.innerHTML;
                         console.log(timeForGame);
-                        const mainAppEl = document.getElementById('main-page');
+                        const mainAppEl = document.getElementById(
+                           'main-page'
+                        ) as HTMLElement;
                         mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/dead.svg" alt="dead">
@@ -145,17 +154,19 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                             </section>                      
                         `;
 
-                        const appEl =
-                           document.querySelector('.game__container');
+                        const appEl = document.querySelector(
+                           '.game__container'
+                        ) as HTMLElement;
                         appEl.classList.add('end_game_background');
 
                         const buttonStartResult = document.querySelector(
                            '.main__game_result_button'
-                        );
+                        ) as HTMLElement;
 
                         buttonStartResult.addEventListener('click', () => {
-                           const appEl =
-                              document.querySelector('.game__container');
+                           const appEl = document.querySelector(
+                              '.game__container'
+                           ) as HTMLElement;
                            clickable = true;
                            firstCard = null;
                            secondCard = null;
@@ -173,7 +184,9 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                   )
                ) {
                   const timeForGame = countEl.innerHTML;
-                  const mainAppEl = document.getElementById('main-page');
+                  const mainAppEl = document.getElementById(
+                     'main-page'
+                  ) as HTMLElement;
                   mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/win.svg" alt="dead">
@@ -201,11 +214,13 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                             </section>  
                         `;
 
-                  const appEl = document.querySelector('.game__container');
+                  const appEl = document.querySelector(
+                     '.game__container'
+                  ) as HTMLElement;
                   appEl.classList.add('end_game_background');
                   const buttonStartResult = document.querySelector(
                      '.main__game_result_button'
-                  );
+                  ) as HTMLElement;
                   buttonStartResult.addEventListener('click', () => {
                      clickable = true;
                      firstCard = null;
@@ -216,7 +231,7 @@ export const startGameClosedCards = ({ appEl, cardsIcons }) => {
                }
             }
          });
-      }
+      });
    };
    flipCard();
 };

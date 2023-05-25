@@ -1,8 +1,8 @@
 import { startGame } from './startGame.js';
 export const createGameMenu = () => {
-   const mainAppEl = document.getElementById('main-page');
+   const mainAppEl = document.getElementById('main-page') as HTMLElement;
    mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
-   const appEl = document.querySelector('.game__container');
+   const appEl = document.querySelector('.game__container') as HTMLElement;
 
    appEl.innerHTML = '';
 
@@ -27,16 +27,20 @@ export const createGameMenu = () => {
  </div>
   `;
 
-   const chooseDifficultButtons = document.querySelectorAll(
-      '.start__main_level-button'
-   );
-   const buttonStart = document.querySelector('.start__main_button');
+   const chooseDifficultButtons = document.querySelectorAll('.start__main_level-button')
+   const buttonStart = document.querySelector('.start__main_button') as HTMLElement;
    console.log(chooseDifficultButtons);
 
-   for (let chooseDifficultButton of chooseDifficultButtons) {
+   chooseDifficultButtons.forEach(chooseDifficultButton => {
+    chooseDifficultButton.addEventListener('click', () => {
+        const gameLevel = Number((chooseDifficultButton as HTMLButtonElement).value);
+        buttonStart.addEventListener('click', () => startGame(gameLevel));
+     }); 
+    });
+   /* for (let chooseDifficultButton of chooseDifficultButtons) {
       chooseDifficultButton.addEventListener('click', () => {
          const gameLevel = Number(chooseDifficultButton.value);
          buttonStart.addEventListener('click', () => startGame(gameLevel));
       });
-   }
+   } */
 };

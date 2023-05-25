@@ -1,24 +1,24 @@
 import { createIconsArray } from './utils.js';
 import { createGameMenu } from './gameMenu.js';
 import { startGameClosedCards } from './startGameClosed.js';
-export const startGame = (gameLevel) => {
-   const mainAppEl = document.getElementById('main-page');
+export const startGame = (gameLevel: number) => {
+   const mainAppEl = document.getElementById('main-page') as HTMLElement;
    mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
-   const suitsBackground = {
+   /* const suitsBackground = {
       '♠': 'spades.svg',
       '♣': 'clubs.svg',
       '♥': 'hearts.svg',
       '♦': 'diamonds.svg',
-   };
+   }; */
 
    console.log(gameLevel);
 
-   const appEl = document.querySelector('.game__container');
-   const cardsIcons = createIconsArray(gameLevel);
+   const appEl = document.querySelector('.game__container') as HTMLElement;
+   const cardsIcons = createIconsArray(gameLevel) as string[];
    console.log(cardsIcons);
 
    const cardsHtml = cardsIcons
-      .map((card) => {
+      .map((card: any) => {
          return `
     <div data-value=${card.value} data-suit=${
             card.suit
@@ -62,7 +62,7 @@ export const startGame = (gameLevel) => {
     </div>`;
 
    
-   const buttonStartGame = document.querySelector('.main__game_content_button');
+   const buttonStartGame = document.querySelector('.main__game_content_button') as HTMLElement;
    buttonStartGame.addEventListener('click', () => {
       createGameMenu();
    });
