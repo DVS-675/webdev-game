@@ -16,7 +16,7 @@ export const startGameClosedCards = ({
       '♥': 'hearts.svg',
       '♦': 'diamonds.svg',
    };
-   const cardsHtml =
+   let cardsHtml =
       cardsIcons &&
       cardsIcons
          .map((card: any) => {
@@ -127,6 +127,33 @@ export const startGameClosedCards = ({
                         const mainAppEl = document.getElementById(
                            'main-page'
                         ) as HTMLElement;
+                        const cardsHtml = cardsIcons
+                        .map((card: any) => {
+                           return `
+                     <div data-value=${card.value} data-suit=${
+                              card.suit
+                           } class="main__game_cards_item" >
+                         <div class="main__game_cards_item_left">
+                              <div class="card__value">${card.value}</div>
+                              <img class="card__suit" src="img/${
+                                 suitsBackground[card.suit]
+                              }" alt="suit">
+                        </div>
+                        <div class="main__game_cards_item_center">
+                        <img class="card__suit_center" src="img/${
+                           suitsBackground[card.suit]
+                        }" alt="suit">          
+                        </div>
+                        <div class="main__game_cards_item_right">
+                              <div class="card__value">${card.value}</div>
+                              <img class="card__suit" src="img/${
+                                 suitsBackground[card.suit]
+                              }" alt="suit">
+                        </div>
+                     </div>
+                     `              ;
+                        })
+                        .join('');
                         mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/dead.svg" alt="dead">
@@ -184,9 +211,34 @@ export const startGameClosedCards = ({
                   )
                ) {
                   const timeForGame = countEl.innerHTML;
-                  const mainAppEl = document.getElementById(
-                     'main-page'
-                  ) as HTMLElement;
+                  const mainAppEl = document.getElementById('main-page') as HTMLElement;
+                  const cardsHtml = cardsIcons
+                        .map((card: any) => {
+                           return `
+                     <div data-value=${card.value} data-suit=${
+                              card.suit
+                           } class="main__game_cards_item" >
+                         <div class="main__game_cards_item_left">
+                              <div class="card__value">${card.value}</div>
+                              <img class="card__suit" src="img/${
+                                 suitsBackground[card.suit]
+                              }" alt="suit">
+                        </div>
+                        <div class="main__game_cards_item_center">
+                        <img class="card__suit_center" src="img/${
+                           suitsBackground[card.suit]
+                        }" alt="suit">          
+                        </div>
+                        <div class="main__game_cards_item_right">
+                              <div class="card__value">${card.value}</div>
+                              <img class="card__suit" src="img/${
+                                 suitsBackground[card.suit]
+                              }" alt="suit">
+                        </div>
+                     </div>
+                     `              ;
+                        })
+                        .join('');
                   mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/win.svg" alt="dead">
@@ -214,13 +266,9 @@ export const startGameClosedCards = ({
                             </section>  
                         `;
 
-                  const appEl = document.querySelector(
-                     '.game__container'
-                  ) as HTMLElement;
+                  const appEl = document.querySelector('.game__container') as HTMLElement;
                   appEl.classList.add('end_game_background');
-                  const buttonStartResult = document.querySelector(
-                     '.main__game_result_button'
-                  ) as HTMLElement;
+                  const buttonStartResult = document.querySelector('.main__game_result_button') as HTMLElement;
                   buttonStartResult.addEventListener('click', () => {
                      clickable = true;
                      firstCard = null;
