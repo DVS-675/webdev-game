@@ -1,4 +1,4 @@
-import { startGame } from './startGame.js';
+import { startGame } from './startGame';
 export const createGameMenu = () => {
    const mainAppEl = document.getElementById('main-page') as HTMLElement;
    mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;

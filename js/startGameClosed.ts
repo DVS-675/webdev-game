@@ -1,4 +1,4 @@
-import { createGameMenu } from './gameMenu.js';
+import { createGameMenu } from './gameMenu';
 
 let clickable = true;
 let firstCard: any = null;
@@ -10,7 +10,7 @@ export const startGameClosedCards = ({
    appEl: HTMLElement;
    cardsIcons: any;
 }) => {
-   const suitsBackground = {
+   const suitsBackground: any = {
       '♠': 'spades.svg',
       '♣': 'clubs.svg',
       '♥': 'hearts.svg',
@@ -57,8 +57,8 @@ export const startGameClosedCards = ({
          const seconds = ('00' + (timer % 60)).slice(-2);
          countEl.textContent = `${minutes}.${seconds}`;
       }
-      window.cardGame.timeGame = setInterval(setTime, 1000);
-      setTimeout(clearInterval, 600000, window.cardGame.timeGame);
+      window.timeGame = setInterval(setTime, 1000);
+      setTimeout(clearInterval, 600000, window.timeGame);
    }
    timeGame();
 
@@ -75,12 +75,12 @@ export const startGameClosedCards = ({
    });
 
    const flipCard = () => {
-      const cardItems = document.querySelectorAll('.main__game_cards_item');
-      cardItems.forEach((cardItem) => {
+      const cardItems = document.querySelectorAll('.main__game_cards_item') 
+      cardItems.forEach((cardItem: any) => {
          cardItem .addEventListener('click', () => {
             if (clickable) {
-               const cardSuit = window.cardGame.cardItem.dataset.suit;
-               const cardValue = window.cardGame.cardItem.dataset.value;
+               const cardSuit = cardItem.dataset.suit;
+               const cardValue = cardItem.dataset.value;
                cardItem.classList.remove('flip');
                cardItem.innerHTML = `            
             <div class="main__game_cards_item_left">

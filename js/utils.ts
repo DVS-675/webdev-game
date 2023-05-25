@@ -1,4 +1,4 @@
-import Deck from './deck.js'
+import Deck from './deck'
 
 export const duplicateArrayAndMix = (array: string[]) => {
    const duplicateCards = array.flatMap((i:string) => [i, i])

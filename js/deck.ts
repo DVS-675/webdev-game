@@ -2,15 +2,9 @@ const SUITS = ['♠', '♣', '♥', '♦'];
 const VALUES = ['A', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
 export default class Deck {
-   cards: any
-   suitsBackground: { '♠': any; '♣': any; '♥': any; '♦': any };
-   constructor(cards:any = freshDeck()) {
-      this.suitsBackground = {
-         '♠': 'spades.svg',
-         '♣': 'clubs.svg',
-         '♥': 'hearts.svg',
-         '♦': 'diamonds.svg',
-      };
+   cards: any;
+
+   constructor(cards = freshDeck()) {
       this.cards = cards;
    }
 
@@ -29,12 +23,12 @@ export default class Deck {
 }
 
 class Card {
-   suit: string
-   value: string
-   constructor(suit:string, value:string) {
+   suit: string;
+   value: string;
+   constructor(suit: string, value: string) {
       this.suit = suit;
       this.value = value;
-   }   
+   }
 }
 
 function freshDeck() {

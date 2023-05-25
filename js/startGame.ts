@@ -1,15 +1,15 @@
-import { createIconsArray } from './utils.js';
-import { createGameMenu } from './gameMenu.js';
-import { startGameClosedCards } from './startGameClosed.js';
+import { createIconsArray } from './utils';
+import { createGameMenu } from './gameMenu';
+import { startGameClosedCards } from './startGameClosed';
 export const startGame = (gameLevel: number) => {
    const mainAppEl = document.getElementById('main-page') as HTMLElement;
    mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
-   /* const suitsBackground = {
+   const suitsBackground: any = {
       '♠': 'spades.svg',
       '♣': 'clubs.svg',
       '♥': 'hearts.svg',
       '♦': 'diamonds.svg',
-   }; */
+   };
 
    console.log(gameLevel);
 

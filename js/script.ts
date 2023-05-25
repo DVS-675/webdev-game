@@ -1,8 +1,9 @@
-import { createGameMenu } from './gameMenu.js'
+import { createGameMenu } from './gameMenu'
 import '../css/style.scss'
 declare global {
    interface Window {
        cardGame: any;
+       timeGame: any
    }
 }
 const cardsApp = () => {
