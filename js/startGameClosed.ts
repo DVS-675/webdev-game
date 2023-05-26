@@ -1,5 +1,5 @@
 import { createGameMenu } from './gameMenu';
-import {ICardType} from './startGame'
+import { ICardType } from './startGame';
 let clickable = true;
 let firstCard: HTMLElement | null = null;
 let secondCard: HTMLElement | null = null;
@@ -80,63 +80,70 @@ export const startGameClosedCards = ({
 
    const flipCard = () => {
       const cardItems = document.querySelectorAll('.main__game_cards_item');
-      cardItems.forEach((cardItem: any) => {
-         cardItem.addEventListener('click', () => {
-            if (clickable) {
-               const cardSuit = cardItem.dataset.suit;
-               const cardValue = cardItem.dataset.value;
-               cardItem.classList.remove('flip');
-               cardItem.innerHTML = `            
+      (cardItems as NodeListOf<HTMLElement>).forEach(
+         (cardItem: HTMLElement) => {
+            cardItem.addEventListener('click', () => {
+               if (clickable) {
+                  const cardSuit = cardItem.dataset.suit;
+                  const cardValue = cardItem.dataset.value;
+                  cardItem.classList.remove('flip');
+                  cardItem.innerHTML = `            
             <div class="main__game_cards_item_left">
                 <div class="card__value">${cardValue}</div>
-                <img class="card__suit" src="img/${suitsBackground[cardSuit]}" alt="suit">
+                <img class="card__suit" src="img/${
+                   suitsBackground[cardSuit as string]
+                }" alt="suit">
             </div>
             <div class="main__game_cards_item_center">
-                <img class="card__suit_center" src="img/${suitsBackground[cardSuit]}" alt="suit">          
+                <img class="card__suit_center" src="img/${
+                   suitsBackground[cardSuit as string]
+                }" alt="suit">          
             </div>
             <div class="main__game_cards_item_right">
                 <div class="card__value">${cardValue}</div>
-                <img class="card__suit" src="img/${suitsBackground[cardSuit]}" alt="suit">
+                <img class="card__suit" src="img/${
+                   suitsBackground[cardSuit as string]
+                }" alt="suit">
             </div>
                 `;
 
-               if (firstCard == null) {
-                  firstCard = cardItem;
-               } else {
-                  if (cardItem != firstCard) {
-                     secondCard = cardItem;
-                     clickable = false;
-                  }
-               }
-
-               if (firstCard != null && secondCard != null) {
-                  if (
-                     firstCard.dataset.value == secondCard.dataset.value &&
-                     firstCard.dataset.suit == secondCard.dataset.suit
-                  ) {
-                     setTimeout(() => {
-                        firstCard = null;
-                        secondCard = null;
-                        clickable = true;
-                     }, 500);
+                  if (firstCard == null) {
+                     firstCard = cardItem;
                   } else {
-                     setTimeout(() => {
-                        console.log(cardItems);
-                        cardItems.forEach((cardItem) =>
-                           cardItem.classList.remove('flip')
-                        );
+                     if (cardItem != firstCard) {
+                        secondCard = cardItem;
+                        clickable = false;
+                     }
+                  }
 
-                        const timeForGame = countEl.innerHTML;
-                        console.log(timeForGame);
-                        const mainAppEl = document.getElementById(
-                           'main-page'
-                        ) as HTMLElement;
-                        const cardsHtml = cardsIcons
-                           .map((card: ICardType) => {
-                              return `
+                  if (firstCard != null && secondCard != null) {
+                     if (
+                        firstCard.dataset.value == secondCard.dataset.value &&
+                        firstCard.dataset.suit == secondCard.dataset.suit
+                     ) {
+                        setTimeout(() => {
+                           firstCard = null;
+                           secondCard = null;
+                           clickable = true;
+                        }, 500);
+                     } else {
+                        setTimeout(() => {
+                           console.log(cardItems);
+                           cardItems.forEach((cardItem) =>
+                              cardItem.classList.remove('flip')
+                           );
+
+                           const timeForGame = countEl.innerHTML;
+                           console.log(timeForGame);
+                           const mainAppEl = document.getElementById(
+                              'main-page'
+                           ) as HTMLElement;
+                           const cardsHtml = cardsIcons
+                              .map((card: ICardType) => {
+                                 return `
                      <div data-value=${card.value} data-suit=${
-                                 card.suit
-                              } class="main__game_cards_item" >
+                                    card.suit
+                                 } class="main__game_cards_item" >
                          <div class="main__game_cards_item_left">
                               <div class="card__value">${card.value}</div>
                               <img class="card__suit" src="img/${
@@ -156,9 +163,9 @@ export const startGameClosedCards = ({
                         </div>
                      </div>
                      `;
-                           })
-                           .join('');
-                        mainAppEl.innerHTML = `
+                              })
+                              .join('');
+                           mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/dead.svg" alt="dead">
                               <h2 class="main__game_result_text">Вы проиграли</h2>
@@ -185,45 +192,45 @@ export const startGameClosedCards = ({
                             </section>                      
                         `;
 
-                        const appEl = document.querySelector(
-                           '.game__container'
-                        ) as HTMLElement;
-                        appEl.classList.add('end_game_background');
-
-                        const buttonStartResult = document.querySelector(
-                           '.main__game_result_button'
-                        ) as HTMLElement;
-
-                        buttonStartResult.addEventListener('click', () => {
                            const appEl = document.querySelector(
                               '.game__container'
                            ) as HTMLElement;
+                           appEl.classList.add('end_game_background');
+
+                           const buttonStartResult = document.querySelector(
+                              '.main__game_result_button'
+                           ) as HTMLElement;
+
+                           buttonStartResult.addEventListener('click', () => {
+                              const appEl = document.querySelector(
+                                 '.game__container'
+                              ) as HTMLElement;
+                              clickable = true;
+                              firstCard = null;
+                              secondCard = null;
+                              appEl.classList.remove('end_game_background');
+                              createGameMenu();
+                           });
                            clickable = true;
-                           firstCard = null;
-                           secondCard = null;
-                           appEl.classList.remove('end_game_background');
-                           createGameMenu();
-                        });
-                        clickable = true;
-                     }, 500);
+                        }, 500);
+                     }
                   }
-               }
-               if (
-                  Array.from(cardItems).every(
-                     (cardItem) =>
-                        cardItem.className === 'main__game_cards_item'
-                  )
-               ) {
-                  const timeForGame = countEl.innerHTML;
-                  const mainAppEl = document.getElementById(
-                     'main-page'
-                  ) as HTMLElement;
-                  const cardsHtml = cardsIcons
-                     .map((card: ICardType) => {
-                        return `
+                  if (
+                     Array.from(cardItems).every(
+                        (cardItem) =>
+                           cardItem.className === 'main__game_cards_item'
+                     )
+                  ) {
+                     const timeForGame = countEl.innerHTML;
+                     const mainAppEl = document.getElementById(
+                        'main-page'
+                     ) as HTMLElement;
+                     const cardsHtml = cardsIcons
+                        .map((card: ICardType) => {
+                           return `
                      <div data-value=${card.value} data-suit=${
-                           card.suit
-                        } class="main__game_cards_item" >
+                              card.suit
+                           } class="main__game_cards_item" >
                          <div class="main__game_cards_item_left">
                               <div class="card__value">${card.value}</div>
                               <img class="card__suit" src="img/${
@@ -243,9 +250,9 @@ export const startGameClosedCards = ({
                         </div>
                      </div>
                      `;
-                     })
-                     .join('');
-                  mainAppEl.innerHTML = `
+                        })
+                        .join('');
+                     mainAppEl.innerHTML = `
                             <div class="main__game_result">
                               <img class = 'main__game_result_img'src="./img/win.svg" alt="dead">
                               <h2 class="main__game_result_text">Вы выиграли</h2>
@@ -272,24 +279,25 @@ export const startGameClosedCards = ({
                             </section>  
                         `;
 
-                  const appEl = document.querySelector(
-                     '.game__container'
-                  ) as HTMLElement;
-                  appEl.classList.add('end_game_background');
-                  const buttonStartResult = document.querySelector(
-                     '.main__game_result_button'
-                  ) as HTMLElement;
-                  buttonStartResult.addEventListener('click', () => {
-                     clickable = true;
-                     firstCard = null;
-                     secondCard = null;
-                     appEl.classList.remove('end_game_background');
-                     createGameMenu();
-                  });
+                     const appEl = document.querySelector(
+                        '.game__container'
+                     ) as HTMLElement;
+                     appEl.classList.add('end_game_background');
+                     const buttonStartResult = document.querySelector(
+                        '.main__game_result_button'
+                     ) as HTMLElement;
+                     buttonStartResult.addEventListener('click', () => {
+                        clickable = true;
+                        firstCard = null;
+                        secondCard = null;
+                        appEl.classList.remove('end_game_background');
+                        createGameMenu();
+                     });
+                  }
                }
-            }
-         });
-      });
+            });
+         }
+      );
    };
    flipCard();
 };
