@@ -1,8 +1,7 @@
 import { createGameMenu } from './gameMenu'
 import '../css/style.scss'
 declare global {
-   interface Window {
-       cardGame: any;
+   interface Window {      
        timeGame: any
    }
 }

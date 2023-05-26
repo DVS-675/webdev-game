@@ -1,6 +1,6 @@
 import Deck from './deck'
 
-export const duplicateArrayAndMix = (array: string[]) => {
+export const duplicateArrayAndMix = (array: any) => {
    const duplicateCards = array.flatMap((i:string) => [i, i])
    for (let i = 0; i < duplicateCards.length - 1; i++) {
       let j = i + Math.floor(Math.random() * (duplicateCards.length - i))

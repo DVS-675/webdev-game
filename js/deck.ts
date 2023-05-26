@@ -2,9 +2,10 @@ const SUITS = ['♠', '♣', '♥', '♦'];
 const VALUES = ['A', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
 export default class Deck {
-   cards: any;
+   cards: Card[];
 
    constructor(cards = freshDeck()) {
+      
       this.cards = cards;
    }
 

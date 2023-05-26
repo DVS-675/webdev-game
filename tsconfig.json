@@ -1,5 +1,5 @@
 {
-    "compilerOptions": {
+   "compilerOptions": {
       "strict": true, // Включает все жесткие проверки типов
       "outDir": "./dist/",
       "noImplicitAny": true,
@@ -8,5 +8,5 @@
       "allowJs": true,
       "sourceMap": true,
       "moduleResolution": "node"
-    }
-  }
+   }
+}
