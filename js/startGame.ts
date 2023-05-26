@@ -1,6 +1,11 @@
 import { createIconsArray } from './utils';
 import { createGameMenu } from './gameMenu';
 import { startGameClosedCards } from './startGameClosed';
+
+export interface ICardType {
+   suit:string,
+   value:string
+}
 export const startGame = (gameLevel: number) => {
    const mainAppEl = document.getElementById('main-page') as HTMLElement;
    mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
@@ -13,15 +18,15 @@ export const startGame = (gameLevel: number) => {
       '♥': 'hearts.svg',
       '♦': 'diamonds.svg',
    };
-
+   
    console.log(gameLevel);
    console.log(suitsBackground)
    const appEl = document.querySelector('.game__container') as HTMLElement;
-   const cardsIcons = createIconsArray(gameLevel) as string[];
+   const cardsIcons = createIconsArray(gameLevel) as ICardType[];
    console.log(cardsIcons);
    
    const cardsHtml = cardsIcons
-      .map((card:any) => {
+      .map((card:ICardType) => {
          console.log(card)
          return `
     <div data-value=${card.value} data-suit=${

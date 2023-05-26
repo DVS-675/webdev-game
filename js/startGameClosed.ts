@@ -1,5 +1,5 @@
 import { createGameMenu } from './gameMenu';
-
+import {ICardType} from './startGame'
 let clickable = true;
 let firstCard: HTMLElement | null = null;
 let secondCard: HTMLElement | null = null;
@@ -8,7 +8,7 @@ export const startGameClosedCards = ({
    cardsIcons,
 }: {
    appEl: HTMLElement;
-   cardsIcons: string[];
+   cardsIcons: ICardType[];
 }) => {
    type suitsBackgroundType = {
       [word: string]: string;
@@ -22,7 +22,7 @@ export const startGameClosedCards = ({
    let cardsHtml =
       cardsIcons &&
       cardsIcons
-         .map((card: any) => {
+         .map((card: ICardType) => {
             return `
     <div data-value=${card.value} data-suit=${card.suit} class='main__game_cards_item flip' >
         
@@ -132,7 +132,7 @@ export const startGameClosedCards = ({
                            'main-page'
                         ) as HTMLElement;
                         const cardsHtml = cardsIcons
-                           .map((card: any) => {
+                           .map((card: ICardType) => {
                               return `
                      <div data-value=${card.value} data-suit=${
                                  card.suit
@@ -219,7 +219,7 @@ export const startGameClosedCards = ({
                      'main-page'
                   ) as HTMLElement;
                   const cardsHtml = cardsIcons
-                     .map((card: any) => {
+                     .map((card: ICardType) => {
                         return `
                      <div data-value=${card.value} data-suit=${
                            card.suit
