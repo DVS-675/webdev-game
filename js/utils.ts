@@ -1,4 +1,4 @@
-import Deck from './deck'
+import {Deck} from './deck'
 import {ICardType} from './startGame'
 export const duplicateArrayAndMix = (array: ICardType[]) => {
    const duplicateCards = array.flatMap((i:ICardType) => [i, i])

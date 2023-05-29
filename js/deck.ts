@@ -1,7 +1,7 @@
 const SUITS = ['♠', '♣', '♥', '♦'];
 const VALUES = ['A', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
-export default class Deck {
+export class Deck {
    cards: Card[];
 
    constructor(cards = freshDeck()) {
