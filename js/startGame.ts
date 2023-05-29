@@ -1,22 +1,33 @@
-import { createIconsArray } from './utils.js'
-import { createGameMenu } from './gameMenu.js'
-import { startGameClosedCards } from './startGameClosed.js'
-export const startGame = (gameLevel) => {
-   const suitsBackground = {
-      '♠': 'card_suit_spades.svg',
-      '♣': 'card_suit_clubs.svg',
-      '♥': 'card_suit_hearts.svg',
-      '♦': 'card_suit_diamonds.svg',
-   }
+import { createIconsArray } from './utils';
+import { createGameMenu } from './gameMenu';
+import { startGameClosedCards } from './startGameClosed';
 
-   console.log(gameLevel)
+export interface ICardType {
+   suit: string;
+   value: string;
+}
+export const startGame = (gameLevel: number) => {
+   const mainAppEl = document.getElementById('main-page') as HTMLElement;
+   mainAppEl.innerHTML = `<section id="main" class="game__container"></section>`;
+   type suitsBackgroundType = {
+      [word: string]: string;
+   };
+   const suitsBackground: suitsBackgroundType = {
+      '♠': 'spades.svg',
+      '♣': 'clubs.svg',
+      '♥': 'hearts.svg',
+      '♦': 'diamonds.svg',
+   };
 
-   const appEl = document.querySelector('.game__container')
-   const cardsIcons = createIconsArray(gameLevel)
-   console.log(cardsIcons)
+   console.log(gameLevel);
+   console.log(suitsBackground);
+   const appEl = document.querySelector('.game__container') as HTMLElement;
+   const cardsIcons = createIconsArray(gameLevel) as ICardType[];
+   console.log(cardsIcons);
 
    const cardsHtml = cardsIcons
-      .map((card) => {
+      .map((card: ICardType) => {
+         console.log(card);
          return `
     <div data-value=${card.value} data-suit=${
             card.suit
@@ -39,9 +50,9 @@ export const startGame = (gameLevel) => {
             }" alt="suit">
         </div>
     </div>
-    `
+    `;
       })
-      .join('')
+      .join('');
 
    appEl.innerHTML = `
     <div class='main__game'>
@@ -57,12 +68,13 @@ export const startGame = (gameLevel) => {
             <div class="main__game_cards">
                 ${cardsHtml}
             </div>
-    </div>`
+    </div>`;
 
-   const buttonStartGame = document.querySelector('.main__game_content_button')
+   const buttonStartGame = document.querySelector(
+      '.main__game_content_button'
+   ) as HTMLElement;
    buttonStartGame.addEventListener('click', () => {
-      createGameMenu()
-   })
-   setTimeout(() => startGameClosedCards({ appEl, cardsIcons }), 5000)
-}
-
+      createGameMenu();
+   });
+   setTimeout(() => startGameClosedCards({ appEl, cardsIcons }), 5000);
+};

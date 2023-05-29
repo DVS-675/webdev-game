@@ -1,7 +1,7 @@
-import Deck from './deck.js'
-
-export const duplicateArrayAndMix = (array) => {
-   const duplicateCards = array.flatMap((i) => [i, i])
+import Deck from './deck'
+import {ICardType} from './startGame'
+export const duplicateArrayAndMix = (array: ICardType[]) => {
+   const duplicateCards = array.flatMap((i:ICardType) => [i, i])
    for (let i = 0; i < duplicateCards.length - 1; i++) {
       let j = i + Math.floor(Math.random() * (duplicateCards.length - i))
       let temp = duplicateCards[j]
@@ -11,7 +11,7 @@ export const duplicateArrayAndMix = (array) => {
    return duplicateCards
 }
 
-export const createIconsArray = (gameLevel) => {
+export const createIconsArray = (gameLevel: number) => {
    let deck = new Deck()
    deck.shuffle()
 

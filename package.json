@@ -9,6 +9,7 @@
       "lint:js": "eslint ./js/**/*.js",
       "lint:css": "stylelint ./css/**/*.scss",
       "lint": "npm run lint:js && npm run lint:css",
+      "lint:ts": "tsc --noEmit",
       "prepare": "husky install",
       "stylelint-scss-check": "stylelint-config-prettier-scss-check",
       "build": "set NODE_ENV=production& webpack",
@@ -36,6 +37,8 @@
       "stylelint-config-prettier": "^9.0.3",
       "stylelint-config-standard": "^25.0.0",
       "stylelint-prettier": "^2.0.0",
+      "ts-loader": "^9.4.2",
+      "typescript": "^5.0.4",
       "webpack-cli": "^5.1.1",
       "webpack-dev-server": "^4.15.0"
    }

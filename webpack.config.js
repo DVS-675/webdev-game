@@ -1,15 +1,20 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const isProduction = process.env.NODE_ENV === 'production'
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'development';
 
 module.exports = {
-   entry: './js/script.js',
+   entry: './js/script.ts',
    mode: isProduction ? 'production' : 'development',
    module: {
       rules: [
+         {
+            test: /\.ts$/,
+            use: 'ts-loader',
+            exclude: /node_modules/,
+         },
          {
             test: /\.pug$/,
             loader: 'pug-loader',
@@ -56,7 +61,10 @@ module.exports = {
          filename: '[name].[contenthash].css',
       }),
    ],
+   resolve: {
+      extensions: ['.ts', '.js'],
+   },
    optimization: {
       minimizer: ['...', new CssMinimizerPlugin()],
    },
-}
+};
