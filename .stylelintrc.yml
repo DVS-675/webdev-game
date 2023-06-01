@@ -6,4 +6,6 @@ extends:
       'stylelint-prettier/recommended',
    ]
 rules:
-   color-hex-length: long
+   color-hex-length: long,
+   selector-class-pattern: false,
+   rule-empty-line-before: false
