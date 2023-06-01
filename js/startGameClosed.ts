@@ -19,7 +19,7 @@ export const startGameClosedCards = ({
       '♥': 'hearts.svg',
       '♦': 'diamonds.svg',
    };
-   let cardsHtml =
+   const cardsHtml =
       cardsIcons &&
       cardsIcons
          .map((card: ICardType) => {
@@ -49,7 +49,6 @@ export const startGameClosedCards = ({
 
    //Таймер
    const countEl = document.querySelector('.timer') as HTMLElement;
-   /* countEl.innerHTML = `00.0${timer}`; */
    function timeGame() {
       let timer = 0;
 
@@ -107,19 +106,19 @@ export const startGameClosedCards = ({
             </div>
                 `;
 
-                  if (firstCard == null) {
+                  if (firstCard === null) {
                      firstCard = cardItem;
                   } else {
-                     if (cardItem != firstCard) {
+                     if (cardItem !== firstCard) {
                         secondCard = cardItem;
                         clickable = false;
                      }
                   }
 
-                  if (firstCard != null && secondCard != null) {
+                  if (firstCard !== null && secondCard !== null) {
                      if (
-                        firstCard.dataset.value == secondCard.dataset.value &&
-                        firstCard.dataset.suit == secondCard.dataset.suit
+                        firstCard.dataset.value === secondCard.dataset.value &&
+                        firstCard.dataset.suit === secondCard.dataset.suit
                      ) {
                         setTimeout(() => {
                            firstCard = null;

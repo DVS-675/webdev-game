@@ -5,7 +5,6 @@ export class Deck {
    cards: Card[];
 
    constructor(cards = freshDeck()) {
-      
       this.cards = cards;
    }
 

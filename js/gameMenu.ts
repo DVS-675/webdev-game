@@ -27,20 +27,20 @@ export const createGameMenu = () => {
  </div>
   `;
 
-   const chooseDifficultButtons = document.querySelectorAll('.start__main_level-button')
-   const buttonStart = document.querySelector('.start__main_button') as HTMLElement;
+   const chooseDifficultButtons = document.querySelectorAll(
+      '.start__main_level-button'
+   );
+   const buttonStart = document.querySelector(
+      '.start__main_button'
+   ) as HTMLElement;
    console.log(chooseDifficultButtons);
 
-   chooseDifficultButtons.forEach(chooseDifficultButton => {
-    chooseDifficultButton.addEventListener('click', () => {
-        const gameLevel = Number((chooseDifficultButton as HTMLButtonElement).value);
-        buttonStart.addEventListener('click', () => startGame(gameLevel));
-     }); 
-    });
-   /* for (let chooseDifficultButton of chooseDifficultButtons) {
+   chooseDifficultButtons.forEach((chooseDifficultButton) => {
       chooseDifficultButton.addEventListener('click', () => {
-         const gameLevel = Number(chooseDifficultButton.value);
+         const gameLevel = Number(
+            (chooseDifficultButton as HTMLButtonElement).value
+         );
          buttonStart.addEventListener('click', () => startGame(gameLevel));
       });
-   } */
+   });
 };
