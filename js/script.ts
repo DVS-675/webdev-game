@@ -1,12 +1,13 @@
-import { createGameMenu } from './gameMenu'
-import '../css/style.scss'
+import { createGameMenu } from './gameMenu';
+import '../css/style.scss';
 declare global {
-   interface Window {      
-       timeGame: ReturnType<typeof setInterval>
+   interface Window {
+      timeGame: ReturnType<typeof setInterval>;
+      timeForGame: unknown;
    }
 }
 const cardsApp = () => {
-   createGameMenu()
-}
+   createGameMenu();
+};
 
-cardsApp()
+cardsApp();

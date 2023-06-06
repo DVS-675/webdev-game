@@ -6,6 +6,12 @@ extends:
       'stylelint-prettier/recommended',
    ]
 rules:
-   color-hex-length: long,
-   selector-class-pattern: false,
-   rule-empty-line-before: false
+   {
+      'font-family-no-missing-generic-family-keyword': null,
+      'declaration-block-no-redundant-longhand-properties': null,
+      'selector-class-pattern':
+         [
+            '^([a-z][a-z0-9]*)([_-]*[a-z0-9]+)*$',
+            { 'message': 'Expected custom property name to be kebab-case' },
+         ],
+   }

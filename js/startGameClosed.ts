@@ -1,5 +1,6 @@
 import { createGameMenu } from './gameMenu';
 import { ICardType } from './startGame';
+import { gameResultWin, gameResultLose, cardItemRender } from './renderHtml';
 let clickable = true;
 let firstCard: HTMLElement | null = null;
 let secondCard: HTMLElement | null = null;
@@ -19,7 +20,7 @@ export const startGameClosedCards = ({
       '♥': 'hearts.svg',
       '♦': 'diamonds.svg',
    };
-   let cardsHtml =
+   const cardsHtml =
       cardsIcons &&
       cardsIcons
          .map((card: ICardType) => {
@@ -49,7 +50,6 @@ export const startGameClosedCards = ({
 
    //Таймер
    const countEl = document.querySelector('.timer') as HTMLElement;
-   /* countEl.innerHTML = `00.0${timer}`; */
    function timeGame() {
       let timer = 0;
 
@@ -87,39 +87,25 @@ export const startGameClosedCards = ({
                   const cardSuit = cardItem.dataset.suit;
                   const cardValue = cardItem.dataset.value;
                   cardItem.classList.remove('flip');
-                  cardItem.innerHTML = `            
-            <div class="main__game_cards_item_left">
-                <div class="card__value">${cardValue}</div>
-                <img class="card__suit" src="img/${
-                   suitsBackground[cardSuit as string]
-                }" alt="suit">
-            </div>
-            <div class="main__game_cards_item_center">
-                <img class="card__suit_center" src="img/${
-                   suitsBackground[cardSuit as string]
-                }" alt="suit">          
-            </div>
-            <div class="main__game_cards_item_right">
-                <div class="card__value">${cardValue}</div>
-                <img class="card__suit" src="img/${
-                   suitsBackground[cardSuit as string]
-                }" alt="suit">
-            </div>
-                `;
+                  cardItem.innerHTML = cardItemRender({
+                     cardValue,
+                     suitsBackground,
+                     cardSuit,
+                  });
 
-                  if (firstCard == null) {
+                  if (firstCard === null) {
                      firstCard = cardItem;
                   } else {
-                     if (cardItem != firstCard) {
+                     if (cardItem !== firstCard) {
                         secondCard = cardItem;
                         clickable = false;
                      }
                   }
 
-                  if (firstCard != null && secondCard != null) {
+                  if (firstCard !== null && secondCard !== null) {
                      if (
-                        firstCard.dataset.value == secondCard.dataset.value &&
-                        firstCard.dataset.suit == secondCard.dataset.suit
+                        firstCard.dataset.value === secondCard.dataset.value &&
+                        firstCard.dataset.suit === secondCard.dataset.suit
                      ) {
                         setTimeout(() => {
                            firstCard = null;
@@ -165,32 +151,10 @@ export const startGameClosedCards = ({
                      `;
                               })
                               .join('');
-                           mainAppEl.innerHTML = `
-                            <div class="main__game_result">
-                              <img class = 'main__game_result_img'src="./img/dead.svg" alt="dead">
-                              <h2 class="main__game_result_text">Вы проиграли</h2>
-                              <p class="main__game_result_text_time">Затраченное время</p>
-                              <p class='main__game_result_text_timer'>${timeForGame}</p>
-                              <button class="main__game_result_button">Играть снова</button>
-                            </div>
-                            <section id="main" class="game__container">
-                              <div class='main__game'>
-                                 
-                                 <div class="main__game_content">
-                                       <div id="timer">
-                                          <div class="timer__text">
-                                             <span class='timer__text_item'>min</span> <span class='timer__text_item'>sek</span>
-                                          </div>
-                                          <p class='timer'>${timeForGame}</p>
-                                       </div>
-                                       <button class="main__game_content_button">Начать заново</button>
-                                 </div>
-                                       <div class="main__game_cards">
-                                          ${cardsHtml}
-                                       </div>
-                              </div>
-                            </section>                      
-                        `;
+                           mainAppEl.innerHTML = gameResultLose({
+                              timeForGame,
+                              cardsHtml,
+                           });
 
                            const appEl = document.querySelector(
                               '.game__container'
@@ -252,32 +216,10 @@ export const startGameClosedCards = ({
                      `;
                         })
                         .join('');
-                     mainAppEl.innerHTML = `
-                            <div class="main__game_result">
-                              <img class = 'main__game_result_img'src="./img/win.svg" alt="dead">
-                              <h2 class="main__game_result_text">Вы выиграли</h2>
-                              <p class="main__game_result_text_time">Затраченное время</p>
-                              <p class='main__game_result_text_timer'>${timeForGame}</p>
-                              <button class="main__game_result_button">Играть снова</button>
-                            </div>
-                            <section id="main" class="game__container">
-                              <div class='main__game'>
-                                 
-                                 <div class="main__game_content">
-                                       <div id="timer">
-                                          <div class="timer__text">
-                                             <span class='timer__text_item'>min</span> <span class='timer__text_item'>sek</span>
-                                          </div>
-                                          <p class='timer'>${timeForGame}</p>
-                                       </div>
-                                       <button class="main__game_content_button">Начать заново</button>
-                                 </div>
-                                       <div class="main__game_cards">
-                                     ${cardsHtml}
-                                       </div>
-                              </div>
-                            </section>  
-                        `;
+                     mainAppEl.innerHTML = gameResultWin({
+                        timeForGame,
+                        cardsHtml,
+                     });
 
                      const appEl = document.querySelector(
                         '.game__container'
