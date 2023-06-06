@@ -71,7 +71,6 @@ export const gameResultWin = ({
 };
 
 //рендер результата игры при проигрыше
-
 export const gameResultLose = ({
    timeForGame,
    cardsHtml,
