@@ -71,7 +71,7 @@ body {
           align-items: center;
   width: 208px;
   height: 96px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
@@ -105,7 +105,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin: 67px auto 50px auto;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -145,7 +145,7 @@ label {
 
 .start__main_level_item {
   z-index: 2;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -176,7 +176,7 @@ input[type=radio]:checked + span {
 }
 
 .timer {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -242,7 +242,7 @@ input[type=radio]:checked + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -270,7 +270,7 @@ input[type=radio]:checked + span {
       -ms-flex-pack: end;
           justify-content: flex-end;
   gap: 40%;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -333,7 +333,7 @@ input[type=radio]:checked + span {
 }
 
 .card__value {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -405,7 +405,7 @@ input[type=radio]:checked + span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -428,7 +428,7 @@ input[type=radio]:checked + span {
   margin-top: 32px;
 }
 .main__game_result_text {
-  margin: 8px auto 28px auto;
+  margin: 8px auto 28px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -439,7 +439,7 @@ input[type=radio]:checked + span {
       -ms-flex-align: center;
           align-items: center;
   height: 48px;
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
@@ -448,7 +448,7 @@ input[type=radio]:checked + span {
   color: #004980;
 }
 .main__game_result_text_time {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -457,7 +457,7 @@ input[type=radio]:checked + span {
   margin-bottom: 10px;
 }
 .main__game_result_text_timer {
-  font-family: "StratosSkyeng";
+  font-family: StratosSkyeng;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -466,4 +466,4 @@ input[type=radio]:checked + span {
   margin-bottom: 40px;
 }
 
-/*# sourceMappingURL=main.f68b3d21cf76756a2470.css.map*/
+/*# sourceMappingURL=main.28ac9cec517d910e74d2.css.map*/
